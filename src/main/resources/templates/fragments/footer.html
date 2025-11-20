@@ -1,0 +1,64 @@
+<footer>
+            <div id="footer">            
+                <div id="f-part1">
+                        <img src="/img/logo/logo.png" alt="">
+                        <h4>Let's connect with our socials</h4>
+                        <div class="icon">
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                </div>
+                <div id="f-part2">
+                    <h3>Company</h3>
+                    <h4>About us</h4>
+                    <h4>Support</h4>
+                    <h4>Privacy Policy</h4>
+                    <h4>Terms and Condition</h4>
+                    <h4>Pricing and Refund</h4>
+                    <h4>Hire From Us</h4>
+                </div>
+                <div id="f-part3">                
+                    <h3>Get in Touch</h3>
+                    <h4>+91 7984098465</h4>
+                    <h4>kavit@gmail.com</h4>
+                    <h4>74 Anjali Char-rasta</h4>                
+                </div>            
+            </div>
+        </footer>
+    </div>
+    <nav>
+        <div id="part-1">
+            <img src="/img/logo/logo.png" alt="">
+            <h2>Course world</h2>
+        </div>
+        <div id="part-2">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>            
+                <li><a th:href="@{/about}">About</a></li>            
+                <li><a th:href="@{/courses}">Courses</a></li>            
+                <li><a th:href="@{/contact}">Contact Us</a></li>
+				<!--<li th:if="${session.user}">
+					 <span th:text="${session.userName}" style="background-color:white; color:black;padding:4px 10px;"></span>
+					 <span th:text="${session.userRole}" style="background-color:white; color:black;padding:4px 10px;"></span> 
+				 </li>  -->                  
+            </ul>
+            <button th:unless="${session.user}"><a th:href="@{/login}">Sign In</a></button>
+			<button th:if="${session.user}">
+			    <a th:href="@{${session['userRole'] == 'Admin' ? '/Admin' : (session['userRole'] == 'Institute' ? '/Institute' : '/User')}}">
+			        Go To Your Panel
+			    </a>
+			</button>
+			<button th:if="${session.user}"><a th:href="@{/logout}">Log Out</a></button>      
+            <button id="close-i"><i  class="fa-solid fa-xmark"></i></button>
+        </div>
+        <button id="menu-i"><i class="fa-solid fa-bars"></i></button>
+    </nav>  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>

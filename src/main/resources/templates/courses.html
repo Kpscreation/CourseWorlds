@@ -1,0 +1,117 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+    <style>
+        #page-1{            
+            align-items: flex-start;            
+            justify-content: center;            
+            padding:clamp(20px,5vw,100px);
+            padding-top:10rem;
+            height: auto; 
+            gap:50px;
+        }    
+        #first-part{                      
+            align-items: flex-start;            
+            justify-content:flex-start;
+        }
+        #first-part h1{
+            text-align: start;
+            line-height:1.1em;
+        }
+        #page-1 h4{
+            color:White;
+            font-weight:100;
+            font-size:clamp(20px,2.3vw,3rem);
+            font-family: Arial, Helvetica, sans-serif;            
+            word-spacing: -6px;        
+            text-align: center;    
+        }
+        #page-3{
+            display: flex;
+            flex-direction: column;      
+            align-items: flex-start;
+            justify-content: center;            
+        }                
+        .page-3 h4{
+            color:White;
+            font-family: 'Helvetica';
+            font-size: clamp(20px,2vw,24px);
+            font-weight: 200;                        
+        }
+        @media (max-width:600px) {
+            #page-1{
+                padding:0px;
+                padding-top:50px;                
+                justify-content: center;
+                align-items: center;
+            }
+            #page-1 #first-part{
+                align-items: center;                
+            }
+            #first-part h1{
+                text-align: center;
+            }
+            #Courses{
+                flex-direction: column;
+            }
+
+        }        
+        
+    </style>
+	
+	<script>
+	    window.addEventListener("pageshow", function (event) {
+	        if (event.persisted) {
+	            window.location.reload(); // Force a refresh if page was loaded from cache
+	        }
+	    });
+	</script>
+
+<body>              
+
+    <div class="container">        
+        <div id="page-1">
+            <div id="first-part">
+                <h1>We're not a <span style="color:#24cfa6";>course</span><br><span style="color:#24cfa6";>factory.</span></h1>                         
+            </div>            
+            <h4>We focus on courses that really help</h4>
+        </div>       
+        <div id="page-3" class="page-3">          
+            <h4>Courses which do work ↓ </h4>
+            <div id="Courses">
+                <div class="course" th:each="course : ${courses}">
+                    <div class="item">
+						<img th:src="@{'/uploads/' + ${course.img}}" alt="Course Image">
+                        <div class="second-part">
+                            <h2 th:text="${course.name}"></h2>
+                            <div class="languages">
+                                <button th:text="${course.Level}"></button>
+                                <button th:text="${course.Language}"></button>
+                            </div>
+                        </div>
+                        <div class="third-part">
+                            <!--<h4>Limited Time Discount</h4>-->
+                            <h2 th:text="'₹ ' + ${course.price}"> <!--<del>₹11999</del>--></h2>
+                        </div>
+                   </div>
+                    <button class="viewDetails"><a th:href="@{'/courseDetail/' + ${course.courseId}}">View Details</a></button>
+                </div>                
+                               
+                <!--<div class="course">
+                    <div class="item">
+                        <img src="https://ik.imagekit.io/sheryians/courses_gif/undefined-IMG_5100_7vO7pODI9.JPG" alt="">
+                        <div class="second-part">
+                            <h2>Job Ready AI Powered Cohort: Web + DSA + Aptitude</h2>
+                            <div class="languages">
+                                <button>LIVE BATCH</button>
+                                <button>HINDI</button>
+                            </div>
+                        </div>
+                        <div class="third-part">
+                            <h4>Limited Time Discount</h4>
+                            <h2>₹5999(+GST) <del>₹11999</del></h2>
+                        </div>
+                    </div>
+                    <button class="viewDetails"><a href="courseDetail.html">View Details</a></button>
+                </div>                
+            </div>-->
+        </div>
+<th:block th:insert="~{fragments/footer}"></th:block>

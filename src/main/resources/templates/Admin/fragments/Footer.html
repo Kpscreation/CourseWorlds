@@ -1,0 +1,47 @@
+<!-- jQuery (Ensure this is loaded first) -->
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+
+<!-- jQuery UI (If using UI components) -->
+<script th:src="@{/plugins/jquery-ui/jquery-ui.min.js}"></script>
+<script>
+  // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- ChartJS (Only include if charts are used) -->
+<script th:src="@{/plugins/chart.js/Chart.min.js}"></script>
+
+<!-- Sparkline (Optional) -->
+<script th:src="@{/plugins/sparklines/sparkline.js}"></script>
+
+<!-- JQVMap (Only if using maps) -->
+<script th:src="@{/plugins/jqvmap/jquery.vmap.min.js}"></script>
+<script th:src="@{/plugins/jqvmap/maps/jquery.vmap.usa.js}"></script>
+
+<!-- jQuery Knob Chart (Optional) -->
+<script th:src="@{/plugins/jquery-knob/jquery.knob.min.js}"></script>
+
+<!-- Date Range Picker (Only if needed) -->
+<script th:src="@{/plugins/moment/moment.min.js}"></script>
+<script th:src="@{/plugins/daterangepicker/daterangepicker.js}"></script>
+
+<!-- Tempusdominus Bootstrap 4 (For date/time pickers) -->
+<script th:src="@{/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+<!-- Summernote (If using a rich text editor) -->
+<script th:src="@{/plugins/summernote/summernote-bs4.min.js}"></script>
+
+<!-- Overlay Scrollbars (If needed) -->
+<script th:src="@{/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js}"></script>
+
+<!-- AdminLTE Core -->
+<script th:src="@{/dist/js/adminlte.js}"></script>
+
+<!-- AdminLTE Demo Scripts (Remove in production) -->
+<script th:src="@{/dist/js/demo.js}"></script>
+
+<!-- AdminLTE Dashboard Demo (Remove if not using demo features) -->
+<script th:src="@{/dist/js/pages/dashboard.js}"></script>

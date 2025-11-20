@@ -1,0 +1,56 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+<style>
+input{
+	color: white;	
+}
+</style>
+<body>       
+    <div id="login-container">
+        <div id="login">
+			<form th:action="@{/registration}" method="POST">
+			    <h3>Registration</h3>
+			    <div class="input-group">                    
+			        <label for="role">Type</label>
+			        <select name="role" required>
+			            <option value="User" selected>User</option>
+			            <option value="Institute">Institute</option>                                           
+			        </select>
+			        <span th:if="${roleError}" th:text="${roleError}" style="color:red;"></span>
+			    </div>
+			    <div class="input-group">
+			        <label for="name">Name</label>
+			        <input type="text" name="name" placeholder="Enter your full name" required>
+			        <span th:if="${nameError}" th:text="${nameError}" style="color:red;"></span>
+			    </div>
+			    <div class="input-group">
+			        <label for="email">Email Address</label>
+			        <input type="email" name="email" placeholder="Enter your email address" required>
+			        <span th:if="${emailError}" th:text="${emailError}" style="color:red;"></span>
+			    </div>
+			    <div class="input-group">
+			        <label for="phone">Phone No</label>
+			        <input type="number" name="phone" placeholder="Enter your phone no" required>
+			        <span th:if="${phoneError}" th:text="${phoneError}" style="color:red;"></span>
+			    </div>
+			    <div class="input-group">
+			        <label for="password">Password</label>
+			        <input type="password" name="password" placeholder="Enter your password here" required>
+			        <span th:if="${passwordError}" th:text="${passwordError}" style="color:red;"></span>
+			    </div>
+			    <span th:if="${successMessage}" th:text="${successMessage}" style="color:green;"></span>
+			    <div class="buttons">                
+			        <button type="submit">Continue</button>
+			    </div>
+			    <div id="or">
+			        <div></div>
+			        Or
+			        <div></div>
+			    </div>                
+			</form>
+            <div id="buttons">
+                <a href="#"><i class="fa-brands fa-google"></i>Continue with Google</a>
+                <a th:href="@{/login}">login</a>
+            </div>
+        </div>    
+    </div>
+<th:block th:insert="~{fragments/footer}"></th:block>

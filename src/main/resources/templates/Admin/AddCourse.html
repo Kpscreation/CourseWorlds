@@ -1,0 +1,127 @@
+<th:block th:insert="~{Admin/fragments/Header}" />
+<th:block th:insert="~{Admin/fragments/Navbar}" />
+<th:block th:insert="~{Admin/fragments/Sidebar}" />
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Course Form</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a th:href="@{/Institute}">Home</a></li>
+                        <li class="breadcrumb-item active">Course Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Course Form</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form th:action="@{/Institute/Course/add}" method="post" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <!-- Display general error message at the top of the form -->
+								<div th:if="${error}">
+								    <span th:text="${error}" style="color:red;"></span>
+								</div>
+
+                                <div class="form-group">
+                                    <label for="name">Course Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter course name" required>
+                                    <span th:if="${nameError}" th:text="${nameError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Course Description</label>
+                                    <textarea class="form-control" id="description" name="description" placeholder="Enter course description" rows="3" required></textarea>
+                                    <span th:if="${descriptionError}" th:text="${descriptionError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" class="form-control" id="price" name="price" placeholder="Enter course price" required>
+                                    <span th:if="${priceError}" th:text="${priceError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="category">Course Category</label>
+                                    <select class="form-control" id="category" name="categoryId" required>
+                                        <option value="">Select a Category</option>
+                                        <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}"></option>
+                                    </select>
+                                    <span th:if="${categoryError}" th:text="${categoryError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Level">Course Level</label>
+                                    <select class="form-control" id="Level" name="Level" required>
+                                        <option value="">Select a level</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                    <span th:if="${levelError}" th:text="${levelError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Language">Course Language</label>
+                                    <select class="form-control" id="Language" name="Language" required>
+                                        <option value="">Select a Language</option>
+                                        <option value="English">English</option>
+                                        <option value="Hindi">Hindi</option>
+                                    </select>
+                                    <span th:if="${languageError}" th:text="${languageError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="imgFile">Course Image</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imgFile" name="img" required>
+                                            <label class="custom-file-label" for="imgFile">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <span th:if="${imgError}" th:text="${imgError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="syllabusPdfFile">Syllabus PDF</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="syllabusPdfFile" name="syllabusPdf" required>
+                                            <label class="custom-file-label" for="syllabusPdfFile">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <span th:if="${syllabusPdfError}" th:text="${syllabusPdfError}" style="color:red;"></span>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:insert="~{Admin/fragments/Footer}" />

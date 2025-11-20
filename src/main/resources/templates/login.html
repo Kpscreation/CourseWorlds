@@ -1,0 +1,40 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+<style>
+	input{
+		color: white;	
+	}
+</style>
+<body>
+    <div id="login-container">
+        <div id="login">
+            <form th:action="@{/login}" method="POST">
+                <h3>Login</h3>
+                <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email address">
+                </div>
+                <div class="input-group">
+                    <label for="email">Password</label>
+                    <input type="password" name="password" placeholder="Enter your passowrd here">
+                </div>
+				<!-- Forgot Password Link -->
+				<div class="forgot-password">
+				      <a th:href="@{/forgot-password}">Forgot Password?</a>
+				</div>
+                <div class="buttons">                
+                    <button type="submit">Continue</button>
+                </div>
+                <div id="or">
+                    <div></div>
+                    Or
+                    <div></div>
+                </div>                
+            </form>
+			<p style="color:red;">[[${errorMessage}]]</p>
+            <div id="buttons">
+                <a href="#"><i class="fa-brands fa-google"></i>Continue with Google</a>
+                <a th:href="@{/registration}"><i class="fa-solid fa-user-plus"></i>Create a New Account</a>
+            </div>
+        </div>    
+</div>   
+<th:block th:insert="~{fragments/footer}"></th:block>

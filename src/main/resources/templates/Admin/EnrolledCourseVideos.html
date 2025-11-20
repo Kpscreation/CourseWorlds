@@ -1,0 +1,47 @@
+<th:block th:insert="~{Admin/fragments/Header}" />
+<!-- Navbar -->
+<th:block th:insert="~{Admin/fragments/Navbar}" />
+<!-- Sidebar -->
+<th:block th:insert="~{Admin/fragments/Sidebar}" />
+<style>
+	.video-container {
+	    width: 400px;
+	    height: 200px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    overflow: hidden;
+	}
+
+	.video-player {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	}
+	.row{
+		display: flex;
+		flex-wrap: wrap;		
+		gap:50px;
+	}
+</style>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row" >                    
+                        <div class="small-box video-container p-2"th:each="video : ${videos}" style="display: flex;flex-direction: column;">
+                            <video class="video-player" controls>
+                                <source th:src="@{'/uploads/videos/' + ${video.fileName}}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+							<h2 style="font-size: 20px;padding:5px;"th:text="${video.videoName}"></h2>
+                        </div>                    
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<th:block th:insert="~{Admin/fragments/Footer}" />

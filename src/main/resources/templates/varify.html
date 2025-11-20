@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+	<h2 th:if="${successMessage}" th:text="${successMessage}" style="color:green;"></h2>
+	<h2 th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></h2>
+	<div id="buttons">
+	   		<a th:href="@{/login}">login</a>
+	 </div>
+</body>
+</html>

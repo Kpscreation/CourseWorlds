@@ -1,0 +1,67 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+<body>       
+    <div  id="light-1"></div>                
+        <div class="container">        
+        <div id="page-1">                                            
+                <div id="first-part">                         
+                    <h1>We only <span style="color:#24cfa6";>teach</span><br> what we are really<br> really <span class="italic">good at</span></h1>                                
+                    <button>Check Courses-Make an Impact</button>                
+                </div>        
+            <div id="mileStones">
+                <h2>25k+<br/><span>Students taught</span></h2>                
+                <h2>20+<br/><span>Institutes </span></h2>                
+                <h2>466+<br/><span>Total Courses</span></h2>                
+            </div>
+        </div>
+        <div id="page-2">
+            <div id="light-2"></div>      
+            <div class="text">
+                <h2 class="first_h2">we do whatever it takes to help you <span>understand the concepts</span></h2>
+            </div>
+            <div id="video">
+                <video controls>  
+                    <source src="Video/Main.mp4" type="video/mp4">  
+                    Your browser does not support the html video tag.  
+                </video>  
+            </div>                        
+            <button>Explore free learning</button>
+        </div>
+        <div id="page-3">
+            <div id="light-3"></div>      
+            <h2>Courses Offered.</h2>
+            <div id="Courses">                
+				<div class="course" th:each="course : ${courses}">
+				     <div class="item">
+							<img th:src="@{'/uploads/' + ${course.img}}" alt="Course Image">
+				            <div class="second-part">
+				                   <h2 th:text="${course.name}"></h2>
+				                   <div class="languages">
+				                          <button th:text="${course.Level}"></button>
+				                          <button th:text="${course.Language}"></button>
+				                   </div>
+							</div>
+				            <div class="third-part">
+				                    <!--<h4>Limited Time Discount</h4>-->
+				                    <h2 th:text="'₹ ' + ${course.price}"> <!--<del>₹11999</del>--></h2>
+				            </div>
+				       </div>
+				           <button class="viewDetails"><a th:href="@{'/courseDetail/' + ${course.courseId}}">View Details</a></button>
+                </div>           
+            </div>
+        </div>
+        <div id="page-4">
+            <div class="first-part-page-4">
+                    <h2>
+                        Top <span>companies</span> our students working with
+                    </h2>
+            </div>
+            <div class="second-part-page-4">
+                <img src="https://ik.imagekit.io/sheryians/companies-logo/companies_CcvVE6pUo.png" alt="">
+            </div>
+            <div class="third-part-page-4">
+                    <button>Explore Courses</button>
+            </div>
+        </div>
+<th:block th:insert="~{fragments/footer}"></th:block>
+
+        

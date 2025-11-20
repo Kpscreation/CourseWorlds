@@ -1,0 +1,117 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+<body>
+	<div id="C-D-page-1">
+	  <div id="C-D-part-1">
+	      <div id="subpart-1">
+	        <h2 th:text="${course.name}"></h2>
+	        <div id="C-D-part-1-label">          
+	          <h4 th:text="${course.description}">MERN Stack 🧑🏻‍💻</h4>
+	          <h4>DSA with JS 🙇🏻</h4>
+	          <h4>AI Powered 👨🏻‍🎓</h4>
+	          <h4>Placement Focus 👨🏻</h4>
+	          <h4>Aptitude 🕵🏼‍♂️</h4>
+	        </div>        
+	        <div>
+	          <h3>₹ <span th:text="${course.price}" id="amount"></span></h3>
+	          <h6>Limited Time Discount Applied!</h6>
+	        </div>
+	        <div class="button">
+	          <button id="rzp-button">Buy Now</button>
+	          <button style="background-color:#212121;" ><a style="font-size:0.8em !important;" th:if="${course.syllabusPdf}"
+			  				   th:href="@{'/uploads/' + ${course.syllabusPdf}}"
+			  				   download
+			  				>
+			  				  Download Syllabus
+			  				</a></button>
+	        </div>
+	        <h4>Batch Starts On <span>27th January<span></h4>
+	      </div>
+	  </div>
+	  <div id="C-D-part-2">
+	    <img th:src="@{'/uploads/' + ${course.img}}" alt="Course Image">
+	      <div id="C-D-part-2-Main">              
+	          <div id="C-D-part-2-div-1">
+	              <div class="name">
+	              <span>Language: </span>
+	              <p class="highlight" th:text="${course.Language}"></p>
+	              </div>
+	              <div class="name">
+	                <span>Certificate: </span>
+	                <p class="highlight">YES</p>
+	              </div>              
+	          </div>      
+	          <div id="C-D-part-2-div-2">
+	            <div class="name">
+	              <span>Schedule: </span>
+	              <p class="highlight">Mon - Sat <span>(8:30PM)</span></p>
+	            </div>
+	            <div class="name">
+	              <span>Total Content: </span>
+	              <p class="highlight">200+ Hours</p>
+	            </div>
+	          </div>      
+	      </div>      
+	  </div>
+	</div>
+</body>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+document.getElementById('rzp-button').onclick = function (e) {
+    e.preventDefault();
+	
+    let amount = document.getElementById('amount').innerText;
+	let path = window.location.pathname;
+	let id = path.split("/").pop(); // Get last part of the URL	
+	
+    fetch('http://localhost:9090/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: amount })
+    })
+    .then(response => response.json())	
+    .then(order => {					
+			console.log("Order Created: ", order);
+        	const options = {
+            key: "rzp_test_hVVWbKqMsHhGsw",
+            amount: order.amount,
+            currency: order.currency,
+            order_id: order.id,
+            handler: function (response) {
+                alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+
+                // Send Payment Data to Backend
+                fetch('http://localhost:9090/save?id='+id, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        razorpay_order_id: order.id,
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        amount: order.amount, // Send amount in paise
+                        currency: order.currency,
+                        status: "Success",
+                        method: response.method,
+                        customer_name: "John Doe", // Replace with actual input
+                        customer_email: "johndoe@example.com" // Replace with actual input
+                    })
+                })
+                .then(res => res.json())
+                .then(data => console.log("Payment saved:", data))
+                .catch(err => console.error("Error saving payment:", err));
+
+                // Redirect to Success Page
+                window.location.href = "http://localhost:9090/payment-success?payment_id=" + response.razorpay_payment_id;
+            }			
+        };		
+        const rzp = new Razorpay(options);
+        rzp.open();		
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("Failed to create order. Check the console for details.");
+    });
+};
+</script>
+
+<th:block th:insert="~{fragments/footer}"></th:block>

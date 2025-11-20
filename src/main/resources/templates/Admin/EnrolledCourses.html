@@ -1,0 +1,410 @@
+<th:block th:insert="~{Admin/fragments/Header}" />
+<!-- Navbar -->
+<th:block th:insert="~{Admin/fragments/Navbar}" />
+<!-- Sidebar -->
+<th:block th:insert="~{Admin/fragments/Sidebar}" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    <style>
+		
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Regular_DQCmjH1st.ttf?updatedAt=1713347905052') format('truetype');
+		    font-weight: 400;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Ultrabold_jtJhX5ZopX.ttf?updatedAt=1713347905005') format('truetype');
+		    font-weight: 800;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Black_Jq-BOUQTx.ttf?updatedAt=1713347905045') format('truetype');
+		    font-weight: 900;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Ultralight_L18yrR2IlK.ttf?updatedAt=1713347905074') format('truetype');
+		    font-weight: 200;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Light_gwWCZxVuQl.ttf?updatedAt=1713347904991') format('truetype');
+		    font-weight: 300;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Medium_d0jNuroW9.ttf?updatedAt=1713347904973') format('truetype');
+		    font-weight: 500;
+		    font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'NeueMachina';
+		    src: url('https://ik.imagekit.io/sheryians/Fonts/neueMachina/NeueMachina-Bold_WaMOsLX9Z9.ttf?updatedAt=1713347904936') format('truetype');
+		    font-weight: 700;
+		    font-style: normal;
+		}
+		@font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Regular_5Mzhp8KlA8_CAVTbnsPOM.woff2?updatedAt=1714048137030");
+		    font-weight: normal;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Thin_J0zaDW5kUV_cvf1ZCDypY.woff2?updatedAt=1714048137584");
+		    font-weight: 100;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Light_M4nzWhve6k_k7HolyzL10.woff2?updatedAt=1714048137233");
+		    font-weight: 300;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Medium_2wEhlmo-TD_wsqqEEwmJC.woff2?updatedAt=1714048136783");
+		    font-weight: 500;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Bold_VMHV5twUMR_2SBNfxj1ry.woff2?updatedAt=1714048134442");
+		    font-weight: bold;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Hairline_9Jz6JFa3S_u32EafJPG.woff2?updatedAt=1714048136620");
+		    font-weight: 100;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-LightIta_mLZfHYSDzL_zoX1nh7QCH.woff2?updatedAt=1714048137165");
+		    font-weight: 300;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-RegIta_ZQZ0ISuECo_Ebf0ebpNZw.woff2?updatedAt=1714048136741");
+		    font-weight: normal;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ThinIta__6kihetaOz_w4-Sx_LrF0.woff2?updatedAt=1714048137583");
+		    font-weight: 100;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-MedIta_s4wTiA5al_YBtT5S80dg.woff2?updatedAt=1714048137131");
+		    font-weight: 500;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-HairlineI_KIzj8Plwv_0Olitr0Zj1.woff2?updatedAt=1714048136797");
+		    font-weight: 100;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtBlkIta_f0giU-O0Yd_sAomO0ePGQ.woff2?updatedAt=1714048134074");
+		    font-weight: 900;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-BoldIta_O5gX7g1L5_EGb7W3WC7O.woff2?updatedAt=1714048134080");
+		    font-weight: bold;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-Black_-pjI4fOp4E_mmKDOiFYb1.woff2?updatedAt=1714048134434");
+		    font-weight: 900;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-BlackIta_y1WeOftIb_moP1jEfkvM.woff2?updatedAt=1714048134096");
+		    font-weight: 900;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtBlk_yunH-AhU2b_d1mB8gCvOj.woff2?updatedAt=1714048133983");
+		    font-weight: 900;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtLtIta_GJzq7onfxt_6WJ9e-RWZL.woff2?updatedAt=1714048134137");
+		    font-weight: 200;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtBdIta__MPkMs25CD_MEFsGC4G_T.woff2?updatedAt=1714048134073");
+		    font-weight: 800;
+		    font-style: italic;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtraBold_Qqt_sGOvuc_Z0ZOJEQucI.woff2?updatedAt=1714048134441");
+		    font-weight: 800;
+		    font-style: normal;
+		  }
+		  @font-face {
+		    font-family: "Helvetica";
+		    src: url("https://ik.imagekit.io/sheryians/Fonts/helvetica/HelveticaNowDisplay-ExtLt_R50yORjQ9_zDWWhh4hzv.woff2?updatedAt=1714048134072 ");
+		    font-weight: 200;
+		    font-style: normal;
+		  }
+		  
+		  html,body{
+		      width:100%;
+		      height:100%;
+		      --mercury:#e9e9e9;
+		      --caribbean-green:#24cfa6;    
+		      --placementPrimary:#02e797;
+		      --secondary:#009560;
+		      --activeDark:#212121;
+		  }
+		  
+		/* Page-3 css */
+		#page-3{
+		    width: 100%;    
+		    padding:50px 15px;     
+		    position: relative;
+		}
+		#page-3>h2{
+		    font-family:"NeueMachina";
+		    color:var(--mercury);
+		    font-size:clamp(20px,5vw,45px);
+		    font-weight: 400;        
+		}
+		#Courses{
+		    width:100%;
+		    height:calc(100% - 58px);        
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;    
+		    flex-direction:row;
+		    flex-wrap: wrap;    
+		    gap:2rem;     
+		    z-index: 2;
+		}
+		.course{
+		    /* width: 100%; */
+		    height: 100%;    
+		    margin-top:clamp(20px,4vw,60px);
+		    display: flex;
+		    flex-direction: column;    
+		    gap:20px;    
+		}
+		#page-3 .item{
+		    width:350px;
+		    height:410px;
+		    background:#171717;
+		    border-radius: 20px;
+		}
+		.item img{
+		    width:100%;
+		    object-fit: cover;
+		    height: 200px;
+		    border-top-left-radius: 20px;
+		    border-top-right-radius: 20px;
+		}
+		.item .second-part
+		{
+		    display: flex;    
+		    /* align-items: center; */
+		    flex-direction: column;
+		    justify-content: center;
+		    gap:10px;
+		    padding:20px;
+		}
+		.item .second-part h2{
+		     
+		    color:var(--mercury);
+		    font-family:"Helvetica";
+		    font-weight: 400;    
+		}
+		.item .second-part button{
+		    padding:5px 10px;
+		}
+		.item .third-part
+		{
+		    padding:10px 20px;
+		}
+		.item .third-part h4{
+		    color:var(--caribbean-green);
+		    font-family:"Helvetica";
+		    font-weight: 400;
+
+		}
+		.item .third-part h2{
+		    color:white;
+		    font-family:"Helvetica";
+		    font-weight: 400;
+		    font-size: clamp(20px, 1vw, 25px);
+		}
+		.course .viewDetails{
+		    width: 350px;
+		    font-size: clamp(16px, 2vw, 23px);
+		    padding:10px 0px;
+		    border-radius: 10px;
+		    background-color: var(--caribbean-green);
+		    font-weight: 600;
+		    border: none;    
+		}
+		.viewDetails a{
+		    color:black !important;
+		}
+		#light-3{
+		    width:300px;
+		    height:300px;    
+		    margin-left:0px;     
+		    left:100px;
+		    bottom:200px;
+		    position:absolute;        
+		    border-radius: 50%;
+		    background-color: var(--caribbean-green);            
+		    filter:blur(200px);    
+		    z-index: -1;
+		}
+
+		@media (max-width:500px) {
+		    
+		    .item img{
+		        /* width:100%; */
+		        /* object-fit: cover; */
+		        height: 150px;
+		    }
+		    #Courses{
+		        overflow: auto;
+		        justify-content: space-around;    
+		        flex-wrap: nowrap;        
+		        gap:20px;
+		        /* padding:20px; */
+		    }
+		    #page-3 .item{
+		        width: 280px;
+		        height: auto;
+		    }
+		    #page-3 .viewDetails{
+		        width: 280px;
+		    }    
+		    #light-3{        
+		        left:0px;
+		        bottom:200px;
+		    }    
+		}
+		
+        #page-1{            
+            align-items: flex-start;            
+            justify-content: center;            
+            padding:clamp(20px,5vw,100px);
+            padding-top:10rem;
+            height: auto; 
+            gap:50px;
+        }    
+        #first-part{                      
+            align-items: flex-start;            
+            justify-content:flex-start;
+        }
+        #first-part h1{
+            text-align: start;
+            line-height:1.1em;
+        }
+        #page-1 h4{
+            color:White;
+            font-weight:100;
+            font-size:clamp(20px,2.3vw,3rem);
+            font-family: Arial, Helvetica, sans-serif;            
+            word-spacing: -6px;        
+            text-align: center;    
+        }
+        #page-3{
+            display: flex;
+            flex-direction: column;      
+            align-items: flex-start;
+            justify-content: center;            
+        }                
+        #page-3 h4{
+            color:White;
+            font-family: 'Helvetica';
+            font-size: clamp(20px,2vw,24px);
+            font-weight: 200;                        
+        }
+        @media (max-width:600px) {
+            #page-1{
+                padding:0px;
+                padding-top:50px;                
+                justify-content: center;
+                align-items: center;
+            }
+            #page-1 #first-part{
+                align-items: center;                
+            }
+            #first-part h1{
+                text-align: center;
+            }
+            #Courses{
+                flex-direction: column;
+            }
+
+        }        
+        
+    </style>
+</head>
+<body>      
+	<div class="content-wrapper">
+	  <!-- Content Header (Page header) -->
+	  <div class="content-header">
+	       <div id="page-3">
+	           <div id="Courses">
+				<div class="course" th:each="course : ${courses}">
+				                    <div class="item">
+										<img th:src="@{'/uploads/' + ${course.img}}" alt="Course Image">
+				                        <div class="second-part">
+				                            <h2 th:text="${course.name}"></h2>
+				                            <div class="languages">
+				                                <button th:text="${course.Level}"></button>
+				                                <button th:text="${course.Language}"></button>
+				                            </div>
+				                        </div>
+				                        <div class="third-part">
+				                            <!--<h4>Limited Time Discount</h4>-->
+				                         <!-- <h2 th:text="'₹ ' + ${course.price}"></h2> -->
+				                        </div>
+				                    </div>
+	                   <button class="viewDetails"><a th:href="@{'/User/enrolledCourseVideos/' + ${course.courseId}}">View Course Videos</a></button>
+	               </div>
+	           </div>
+	       </div>
+	  </div>
+	</div>
+</body>
+<th:block th:insert="~{Admin/fragments/Footer}" />

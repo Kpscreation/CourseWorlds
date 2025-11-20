@@ -1,0 +1,58 @@
+<th:block th:insert="~{fragments/header}"></th:block>
+  <title>About Us - Course World</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+   body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;	 
+    }
+    .highlight {
+      color: #00c3a5;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .about-box {
+      background-color: #111;
+      border-radius: 15px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 0 15px rgba(0, 255, 200, 0.1);
+	  overflow: auto;	 
+	  box-sizing: border-box;
+	  height:auto;	  
+    }    			
+  </style>
+</head>
+<body>
+
+  <!-- About Section -->
+  <section class="container text-center" style="margin-top:80px;">
+    <h1 class="section-title">About <span class="highlight">Course World</span></h1>
+    <p class="lead mt-3">Empowering <span class="highlight">Institutes</span> to Teach. Enabling <span class="highlight">Students</span> to Learn.</p>
+
+    <div class="about-box text-start mt-4">
+      <p>
+        Course World is a powerful e-learning platform that connects passionate educators with eager learners. Our mission is simple:
+        <strong>We only teach what we are really good at.</strong>
+      </p>
+      <p>
+        We offer a centralized space where <span class="highlight">institutes</span> from across the country can showcase and sell their high-quality courses. Whether it’s coding, design, business, or arts — if you’re an expert, this is your stage.
+      </p>
+      <p>
+        For <span class="highlight">students</span>, Course World opens a world of learning opportunities. Browse hundreds of verified courses, learn from real educators, and gain skills that matter — all from one trusted platform.
+      </p>
+      <p>
+        With <span class="highlight">25k+</span> students taught, <span class="highlight">20+</span> institutes onboarded, and <span class="highlight">466+</span> total courses, we are growing rapidly and shaping the future of online education.
+      </p>
+      <p class="mb-0">
+        Join us and <span class="highlight">make an impact</span> — whether you're here to teach or to learn.
+      </p>
+    </div>
+  </section>
+  
+</body>
+</html>
+<th:block th:insert="~{fragments/footer}"></th:block>

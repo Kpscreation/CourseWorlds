@@ -1,0 +1,134 @@
+<th:block th:insert="~{Admin/fragments/Header}" />
+<!-- Navbar -->
+<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" th:href="@{../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css}">
+  <link rel="stylesheet" th:href="@{../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css}">
+  <link rel="stylesheet" th:href="@{../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{../../dist/css/adminlte.min.css}">
+<th:block th:insert="~{Admin/fragments/Navbar}" />
+<!-- Sidebar -->
+<th:block th:insert="~{Admin/fragments/Sidebar}" />
+
+<!-- Content Wrapper -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Course Category</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Display Success and Error Messages -->
+    <div class="container">
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <p th:text="${successMessage}"></p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <p th:text="${errorMessage}"></p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Course Categories</h3>
+                <div class="card-tools">
+                    <a href="/Admin/Category/add" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus"></i> Add Category
+                    </a>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+			<div class="card-body">
+				<table id="courseTable" class="table table-bordered table-hover">
+				    <thead>
+				        <tr>
+				            <th>Id</th>
+				            <th>Category Name</th>
+				            <th>Status</th>
+				            <th>Action</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <!-- Your dynamic content here -->
+				        <tr th:each="category : ${categories}">
+				            <td th:text="${category.categoryId}"></td>
+				            <td th:text="${category.categoryName}"></td>
+				            <td>
+				                <span th:if="${category.deletedAt == null}" class="badge badge-success">Active</span>
+				                <span th:if="${category.deletedAt != null}" class="badge badge-danger">Inactive</span>
+				            </td>
+				            <td class="project-actions text-right">
+				                <a class="btn btn-info btn-sm" th:href="@{/Admin/Category/edit/{id}(id=${category.categoryId})}">
+				                    <i class="fas fa-pencil-alt"></i> Edit
+				                </a>
+				                <a class="btn btn-warning btn-sm" 
+				                   th:href="@{/Admin/Category/toggleStatus/{id}(id=${category.categoryId})}"
+				                   th:classappend="${category.deletedAt == null} ? 'btn-danger' : 'btn-success'">
+				                    <i class="fas" th:classappend="${category.deletedAt == null} ? 'fa-ban' : 'fa-check'"></i>
+				                    <span th:text="${category.deletedAt == null} ? 'Deactivate' : 'Activate'"></span>
+				                </a>
+				            </td>
+				        </tr>
+				    </tbody>
+				</table>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<th:block th:insert="~{Admin/fragments/Footer}" />
+
+<script th:src="@{../../plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- DataTables  & Plugins -->
+<script th:src="@{../../plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{../../plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{../../plugins/datatables-buttons/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{../../plugins/jszip/jszip.min.js}"></script>
+<script th:src="@{../../plugins/pdfmake/pdfmake.min.js}"></script>
+<script th:src="@{../../plugins/pdfmake/vfs_fonts.js}"></script>
+<script th:src="@{../../plugins/datatables-buttons/js/buttons.html5.min.js}"></script>
+<script th:src="@{../../plugins/datatables-buttons/js/buttons.print.min.js}"></script>
+<script th:src="@{../../plugins/datatables-buttons/js/buttons.colVis.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{../../dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE for demo purposes -->
+<script th:src="@{../../dist/js/demo.js}"></script>
+
+<script>
+  $(function () {
+    $('#courseTable').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+	  "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#courseTable_wrapper .col-md-6:eq(0)');
+  });
+</script>
